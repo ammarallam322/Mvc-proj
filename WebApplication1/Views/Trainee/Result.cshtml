@@ -1,0 +1,15 @@
+﻿@model TraineeWithCourseResultViewModel;
+@{
+    ViewData["Title"] = "Result";
+}
+
+<h1>Result</h1>
+
+<div id="details" class="card" style="width:400px">
+    <div class="card-body" style="background-color :@Model.color">
+        <h4 class="card-title">@Model.traineeId</h4>
+        <p class="card-text">@Model.traineeName</p>
+        <p class="card-text">@Model.coursNName</p>
+        <p class="card-text">@Model.grade</p>
+    </div>
+</div>

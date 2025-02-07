@@ -1,0 +1,43 @@
+﻿@model List<Course>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_myindexlayout";
+
+}
+
+<form asp-action="Search" asp-controller="Course" method="get" class="form">
+    <div class="input-group">
+        <input type="text" name="term" class="form-control" placeholder="Enter course name" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+</form>
+
+
+<h1>Index</h1>
+<button><a href="/Course/New"> add new course</a></button>
+<table  border="1px">
+    <tr >
+        <td border="1px" width="100px">Id</td>
+        <td border="1px" width="100px">Name</td>
+        <td border="1px" width="100px">degree</td>
+        <td width="100px">min degree</td>
+        <td width="100px">hours</td>
+        <td width="100px">Department</td>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr border="1px">
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.degree</td>
+            <td>@item.minDegree</td>
+            <td>@item.hours</td>
+            <td>@item.Department</td>
+
+        </tr>
+
+    }
+
+</table>

@@ -1,0 +1,36 @@
+﻿@model List<TraineeWithCourseResultViewModel>
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>All Courses</h1>
+
+
+
+<table style="border: 1px solid black;">
+
+    <tr>
+        <td style="width:50px">Id</td>
+        <td style="width:250px">Name</td>
+        <td style="width:50px">grade</td>
+    </tr>
+
+    @foreach (var i in Model)
+    {
+
+        <tr style="background-color :@i.color">
+
+
+            <td>@i.traineeId</td>
+            <td>@i.traineeName</td>
+            <td>@i.grade</td>
+
+
+        </tr>
+
+
+
+    }
+
+
+</table>

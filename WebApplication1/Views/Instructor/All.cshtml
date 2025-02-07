@@ -1,0 +1,49 @@
+﻿@model List<Instructor>
+@{
+    ViewData["Title"] = "All";
+}
+
+<h1>All</h1>
+
+
+
+
+
+@*  button for adding new instructor
+ *@
+
+
+<button><a href="/Instructor/Add"> add new instructor</a></button>
+<table>
+    <tr>
+        <td>Id</td>
+        <td>Name</td>
+        <td>imafe</td>
+        <td>address</td>
+        <td>salary</td>
+        <td>courseId</td>
+        <td>DepartmentId</td>
+        <td>Details</td>
+    </tr>
+
+    @foreach(var instructor in Model){
+
+        <tr>
+            <td width="100px">@instructor.Id  </td>
+            <td width="100px">@instructor.Name  </td>
+            <td width ="100px"><img src="~/Images/@instructor.imageUrl" style="width:100px" /></td>
+            <td width="100px">@instructor.address  </td>
+            <td width="100px">@instructor.salary  </td>
+            <td width="100px">@instructor.crs_id  </td>
+            <td width="100px">@instructor.deptId  </td>
+            <td width="100p" class="card-text"><a href="/Instructor/Edit/@instructor.Id">edit instructors</a> </td>
+            
+
+            
+
+        </tr>
+
+    }
+
+</table>
+
