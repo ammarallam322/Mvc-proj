@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
+using WebApplication1.Repository;
 using WebApplication1.Repository.ImodelRepository;
 using WebApplication1.Repository.modelRepositories;
 
@@ -31,17 +32,19 @@ namespace WebApplication1
 
             //adding register services make controller factory be able to resolve the injection
 
-            builder.Services.AddScoped<ICourseRepository, CourseRepository>();
+            //builder.Services.AddScoped<ICourseRepository, CourseRepository>();
 
-            builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+            //builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 
-            builder.Services.AddScoped<ICraResultRepository, CraResultRepository>();
+            //builder.Services.AddScoped<ICraResultRepository, CraResultRepository>();
 
-            builder.Services.AddScoped<IinstructorRepository, instructorRepository>();
+            //builder.Services.AddScoped<IinstructorRepository, instructorRepository>();
 
-            builder.Services.AddScoped<ITraineeRepository, TraineeRepository>();
+            //builder.Services.AddScoped<ITraineeRepository, TraineeRepository>();
 
 
+            //register of generic repository
+            builder.Services.AddScoped(typeof(IRepositoryGeneric<>), typeof(RepositoryGeneric<>));
 
             // regester of identity and simplyfing password constraints
             builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
