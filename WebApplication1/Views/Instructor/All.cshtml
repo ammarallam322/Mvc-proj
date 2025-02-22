@@ -12,6 +12,13 @@
 @*  button for adding new instructor
  *@
 
+<form asp-action="Search" asp-controller="Instructor" method="get" class="form">
+    <div class="input-group">
+        <input type="text" name="term" class="form-control" placeholder="Enter Instructor name" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+</form>
+
 
 <button><a href="/Instructor/Add"> add new instructor</a></button>
 <table>

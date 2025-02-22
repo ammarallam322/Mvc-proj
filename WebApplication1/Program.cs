@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using WebApplication1.Models;
 using WebApplication1.Repository.ImodelRepository;
@@ -41,6 +42,15 @@ namespace WebApplication1
             builder.Services.AddScoped<ITraineeRepository, TraineeRepository>();
 
 
+
+            // regester of identity and simplyfing password constraints
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
+            {
+                options.Password.RequiredLength = 5;
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+
+            }).AddEntityFrameworkStores<MVCProjectContext>();
 
 
 

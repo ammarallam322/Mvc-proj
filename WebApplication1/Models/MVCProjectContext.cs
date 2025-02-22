@@ -1,9 +1,11 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
+using WebApplication1.ViewModel;
 
 namespace WebApplication1.Models
 {
-    public class MVCProjectContext :DbContext
+    public class MVCProjectContext :IdentityDbContext<ApplicationUser>
     {
 
 
@@ -83,21 +85,21 @@ namespace WebApplication1.Models
             //adding trainees
             #region
             modelBuilder.Entity<Trainee>().
-                HasData(new Trainee() { Id = 1, Name = "ammar allam ", imageUrl="1.gif",address="tala",grade=90,deptId=1});
+                HasData(new Trainee() { Id = 1, Name = "ammar allam ", imageUrl="1.gif",address="tala",grade=70,deptId=1});
             modelBuilder.Entity<Trainee>().
                 HasData(new Trainee() { Id = 2, Name = "ahmed elsobkey", imageUrl="1.gif",address="elbagor",grade=49,deptId=1});
             modelBuilder.Entity<Trainee>().
-             HasData(new Trainee() { Id = 3, Name = "ammar allam ", imageUrl = "1.gif", address = "tala", grade = 90, deptId = 1 });
+             HasData(new Trainee() { Id = 3, Name = "ali saad ", imageUrl = "1.gif", address = "tala", grade = 94, deptId = 1 });
             modelBuilder.Entity<Trainee>().
-                HasData(new Trainee() { Id = 4, Name = "ahmed elsobkey", imageUrl = "1.gif", address = "elbagor", grade = 49, deptId = 1 });
+                HasData(new Trainee() { Id = 4, Name = "maged mohamed", imageUrl = "1.gif", address = "elbagor", grade = 30, deptId = 1 });
             modelBuilder.Entity<Trainee>().
-                         HasData(new Trainee() { Id = 5, Name = "ammar allam ", imageUrl = "1.gif", address = "tala", grade = 90, deptId = 1 });
+                         HasData(new Trainee() { Id = 5, Name = "samy ali ", imageUrl = "1.gif", address = "tala", grade = 84, deptId = 1 });
             modelBuilder.Entity<Trainee>().
-                HasData(new Trainee() { Id = 6, Name = "ahmed elsobkey", imageUrl = "1.gif", address = "elbagor", grade = 49, deptId = 1 });
+                HasData(new Trainee() { Id = 6, Name = "wael nagy", imageUrl = "1.gif", address = "elbagor", grade = 80, deptId = 1 });
             modelBuilder.Entity<Trainee>().
-                         HasData(new Trainee() { Id = 7, Name = "ammar allam ", imageUrl = "1.gif", address = "tala", grade = 90, deptId = 1 });
+                         HasData(new Trainee() { Id = 7, Name = "nader ibrahim ", imageUrl = "1.gif", address = "tala", grade = 77, deptId = 1 });
             modelBuilder.Entity<Trainee>().
-                HasData(new Trainee() { Id = 8, Name = "ahmed elsobkey", imageUrl = "1.gif", address = "elbagor", grade = 49, deptId = 1 });
+                HasData(new Trainee() { Id = 8, Name = "zeyad ahmed", imageUrl = "1.gif", address = "elbagor", grade = 55, deptId = 1 });
 
 
             #endregion
@@ -106,20 +108,22 @@ namespace WebApplication1.Models
             //addding course result 
             #region
 
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id=1,degree="90", Crs_id=1,trainee_id=1});
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id=1,degree="70", Crs_id=1,trainee_id=1});
             modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id=2,degree="49", Crs_id=1,trainee_id=2});
 
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 10, degree = "90", Crs_id = 1, trainee_id = 3 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 10, degree = "80", Crs_id = 1, trainee_id = 3 });
             modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 3, degree = "90", Crs_id = 2, trainee_id = 3 });
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 4, degree = "49", Crs_id = 2, trainee_id = 4 });
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 5, degree = "90", Crs_id = 3, trainee_id = 5 });
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 6, degree = "49", Crs_id = 3, trainee_id = 6 });
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 7, degree = "90", Crs_id = 4, trainee_id = 7 });
-            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 8, degree = "49", Crs_id = 4, trainee_id = 8 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 4, degree = "79", Crs_id = 2, trainee_id = 4 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 5, degree = "50", Crs_id = 3, trainee_id = 5 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 6, degree = "39", Crs_id = 3, trainee_id = 6 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 7, degree = "77", Crs_id = 4, trainee_id = 7 });
+            modelBuilder.Entity<CrsReslt>().HasData(new CrsReslt() { id = 8, degree = "59", Crs_id = 4, trainee_id = 8 });
 
             #endregion
 
             base.OnModelCreating(modelBuilder);
         }
+        public DbSet<WebApplication1.ViewModel.RegisterViewModel> RegisterViewModel { get; set; } = default!;
+        public DbSet<WebApplication1.ViewModel.LoginViewModel> LoginViewModel { get; set; } = default!;
     }
 }

@@ -3,7 +3,7 @@ using WebApplication1.Repository.ImodelRepository;
 
 namespace WebApplication1.Repository.modelRepositories
 {
-    public class CourseRepository : ICourseRepository 
+    public class CourseRepository : RepositoryGeneric<Course>, ICourseRepository 
     {
         MVCProjectContext context;
 
@@ -12,6 +12,19 @@ namespace WebApplication1.Repository.modelRepositories
         {
             this.context = context;
 
+        }
+
+
+        public override List<Course> GetAll()
+        {
+            return context.Course.ToList();
+        }
+
+     
+
+        public override Course GetById(int id)
+        {
+            return context.Course.FirstOrDefault(x => x.Id == id);
         }
 
         public void Add(Course obj)
@@ -27,24 +40,16 @@ namespace WebApplication1.Repository.modelRepositories
             context.Remove(course);
         }
 
-        public List<Course> GetAll()
-        {
-            return context.Course.ToList();
-        }
+      
 
-        public Course GetById(int id)
+        public void Update(Course obj)
         {
-            return context.Course.FirstOrDefault(x => x.Id == id);
+            context.Update(obj);
         }
 
         public int Save()
         {
             return context.SaveChanges();
-        }
-
-        public void Update(Course obj)
-        {
-            context.Update(obj);
         }
 
         //crud operations

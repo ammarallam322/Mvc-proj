@@ -3,7 +3,7 @@ using WebApplication1.Repository.ImodelRepository;
 
 namespace WebApplication1.Repository.modelRepositories
 {
-    public class DepartmentRepository : IDepartmentRepository
+    public class DepartmentRepository : RepositoryGeneric<Department>, IDepartmentRepository
     {
 
         MVCProjectContext context;
@@ -13,12 +13,12 @@ namespace WebApplication1.Repository.modelRepositories
         {
             this.context = context;
         }
-        public List<Department> GetAll()
+        public override List<Department> GetAll()
         {
             return context.Departments.ToList();
         }
 
-        public Department GetById(int id)
+        public override Department GetById(int id)
         {
           return  context.Departments.FirstOrDefault(d => d.Id == id);
         }
@@ -47,6 +47,6 @@ namespace WebApplication1.Repository.modelRepositories
            return context.SaveChanges();
         }
 
-
+     
     }
 }

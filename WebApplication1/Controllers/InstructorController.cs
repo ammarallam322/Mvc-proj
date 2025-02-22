@@ -179,5 +179,32 @@ namespace WebApplication1.Controllers
 
 
 
+
+        public IActionResult Search(string term)
+        {
+
+
+
+            List<Instructor> Instructors;
+
+
+            // 
+            if (!string.IsNullOrEmpty(term))
+            {
+                Instructors = instructorRepository.GetAll()
+
+                    .Where(n => n.Name.StartsWith(term))
+                    .ToList();
+            }
+            else
+            {
+                Instructors = instructorRepository.GetAll();
+            }
+
+            return View("All", Instructors);
+
+
+        }
+
     }
 }

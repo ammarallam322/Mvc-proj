@@ -1,52 +1,44 @@
-﻿//using WebApplication1.Models;
+﻿using WebApplication1.Models;
 
-//namespace WebApplication1.Repository
-//{
-//    public class RepositoryGeneric<t> : IRepositoryGeneric<t>
-//    {
-//        public void Add(t obj)
-//        {
-//            throw new NotImplementedException();
-//        }
+namespace WebApplication1.Repository
+{
+    public abstract class RepositoryGeneric<t> : IRepositoryGeneric<t>  where t : class // t is a reference dattype
+    {
+        //ref from my context --------
 
-//        public void Delete(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
+        MVCProjectContext context;
 
-//        public List<Course> GetAll()
-//        {
-//            throw new NotImplementedException();
-//        }
 
-//        public Course GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
 
-//        public int Save()
-//        {
-//            throw new NotImplementedException();
-//        }
 
-//        public void Update(Course obj)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public void Add(t obj)
+        {
+          context.Add(obj)  ;
+        }
 
-//        public void Update(t obj)
-//        {
-//            throw new NotImplementedException();
-//        }
+        public void Delete(int id)
+        {
+            context.Remove(GetById(id)) ;
 
-//        List<t> IRepositoryGeneric<t>.GetAll()
-//        {
-//            throw new NotImplementedException();
-//        }
+        }
 
-//        t IRepositoryGeneric<t>.GetById(int id)
-//        {
-//            throw new NotImplementedException();
-//        }
-//    }
-//}
+        public  abstract List<t> GetAll();//must extend this method in child class
+
+        public abstract t GetById(int id);//must extend this method in child class
+       
+
+
+        public void Update(t obj)
+        {
+            context.Update(obj) ;
+        }
+
+        public int Save()
+        {
+            return context.SaveChanges();
+        }
+      
+
+    
+    }
+}

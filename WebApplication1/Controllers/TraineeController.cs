@@ -26,6 +26,18 @@ namespace WebApplication1.Controllers
             this.courseRepository = courseRepository;
         }
 
+
+
+        public IActionResult Index()
+        {
+
+            List<Trainee> tr=traineeRepository.GetAll();
+
+            return View("Index",tr);
+        }
+
+
+
         public IActionResult Result(int crsId , int trnId)
         {
 
@@ -49,6 +61,35 @@ namespace WebApplication1.Controllers
 
 
             return View("Result", mymodel);
+        }
+
+
+
+        //search action
+        public IActionResult Search(string term)
+        {
+
+
+
+            List<Trainee> trainees;
+
+
+            // 
+            if (!string.IsNullOrEmpty(term))
+            {
+                trainees = traineeRepository.GetAll()
+
+                    .Where(n => n.Name.StartsWith(term))
+                    .ToList();
+            }
+            else
+            {
+                trainees = traineeRepository.GetAll();
+            }
+
+            return View("Index", trainees);
+
+
         }
     }
 }

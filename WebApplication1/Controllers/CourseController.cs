@@ -242,27 +242,12 @@ namespace WebApplication1.Controllers
 
             #endregion
 
-        //search controller
+        //search action
 
         public IActionResult Search(string term)
         {
 
-            ////obj fom cours
-
-            //List<Course> courses = new List<Course>();
-            ////getting all courses starts with term
-            //if (term != "" &&term!=null)
-            //{
-            //    courses = projectContext.Course
-            //       .Where(n => n.Name.StartsWith(term))
-            //       .ToList();
-            //}
-            //courses = projectContext.Course.ToList();
-
-            //return View("Index", courses);
-
-
-            //----------------------------
+        
 
             List<Course> courses;
 

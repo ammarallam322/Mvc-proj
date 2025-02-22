@@ -3,7 +3,7 @@ using WebApplication1.Repository.ImodelRepository;
 
 namespace WebApplication1.Repository.modelRepositories
 {
-    public class instructorRepository : IinstructorRepository
+    public class instructorRepository : RepositoryGeneric<Instructor>, IinstructorRepository
     {
         //obj from contex
 
@@ -16,12 +16,12 @@ namespace WebApplication1.Repository.modelRepositories
 
       
 
-        public List<Instructor> GetAll()
+        public override List<Instructor> GetAll()
         {
            return contest.Instructors.ToList();
         }
 
-        public Instructor GetById(int id)
+        public override Instructor GetById(int id)
         {
             return contest.Instructors.FirstOrDefault(i => i.Id == id);
         }

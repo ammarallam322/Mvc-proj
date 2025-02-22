@@ -1,0 +1,39 @@
+﻿@model List<Trainee>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<form asp-action="Search" asp-controller="Trainee" method="get" class="form">
+    <div class="input-group">
+        <input type="text" name="term" class="form-control" placeholder="Enter Trainee name" />
+        <button type="submit" class="btn btn-success">Search</button>
+    </div>
+</form>
+
+<table border="1px">
+    <tr>
+        <td border="1px" width="100px">Id</td>
+        <td border="1px" width="200px">Name</td>
+        <td width="100px">address</td>
+        <td width="100px">grade</td>
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+
+        <tr border="1px">
+            <td>@item.Id</td>
+            <td>@item.Name</td>
+            <td>@item.address</td>
+            <td>@item.grade</td>
+          
+
+        </tr>
+
+    }
+
+</table>
